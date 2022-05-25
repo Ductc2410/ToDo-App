@@ -2,24 +2,29 @@ import React, { useRef, useState } from 'react'
 import { nanoid } from 'nanoid';
 
 const Header = ({ createTask }) => {
-    const [task, setTask] = useState();
+    const [task, setTask] = useState('');
     const inputRef = useRef()
 
     const handleClick = () => {
-        if(task){
+        if(task.trim()){
             createTask({
                 id: nanoid(),
                 name: task,
                 status: false
             })
 
-            inputRef.current.value = ''
-            setTask()
+            setTask('')
+            inputRef.current.focus()
         }else{
+            setTask('')
             inputRef.current.focus()
         }
     }
-    
+
+    const handleChange = (e) => {
+        setTask(e.target.value)
+    }
+
     return (
         <React.Fragment>
             <div className="header">
@@ -31,13 +36,14 @@ const Header = ({ createTask }) => {
                         name='task'
                         className='todo_create'
                         placeholder='What needs to be done ?'
-                        onChange={e => setTask(e.target.value)}
+                        onChange={e => handleChange(e)}
+                        value={task}
                         ref={inputRef}
                     />
 
                     <i
                         className='bx bx-plus-medical'
-                        onClick={() => handleClick()}
+                        onClick={handleClick}
                     ></i>
                 </div>
             </div>

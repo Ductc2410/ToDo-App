@@ -29,7 +29,7 @@ export default class Header extends Component {
         return (
             <React.Fragment>
                 <div className="header">
-                    <h1 className="header_title">Todo App - State</h1>
+                    <h1 className="header_title">Todo App - Class</h1>
 
                     <div className='todo_form'>
                         <input

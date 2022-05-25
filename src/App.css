@@ -61,6 +61,7 @@ body {
 	font-size: var(--normal-font-size);
 	color: var(--text-color);
   	background-color: #f5f5f5;
+	overflow-x: hidden;
 }
 
 h1, h2, h3 {
